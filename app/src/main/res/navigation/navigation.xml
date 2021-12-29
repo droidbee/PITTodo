@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/toDoFragment">
+
+    <fragment
+        android:id="@+id/toDoFragment"
+        android:name="com.pittodo.ui.todolist.ToDoFragment"
+        android:label="ToDo"
+        tools:layout="@layout/fragment_to_do" >
+        <action
+            android:id="@+id/action_toDoFragment_to_toDoDetailFragment"
+            app:destination="@id/toDoDetailFragment"
+            app:popUpTo="@id/toDoFragment" />
+        <action
+            android:id="@+id/action_toDoFragment_to_createToDoFragment"
+            app:destination="@id/createToDoFragment"
+            app:popUpTo="@id/toDoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/toDoDetailFragment"
+        android:name="com.pittodo.ui.tododetail.ToDoDetailFragment"
+        android:label="ToDoDetailFragment"
+        tools:layout="@layout/fragment_to_do_detail" >
+        <argument android:name="todoitem"
+            app:argType="com.pittodo.model.ToDoItem"/>
+    </fragment>
+    <fragment
+        android:id="@+id/createToDoFragment"
+        android:name="com.pittodo.ui.createtodo.CreateToDoFragment"
+        android:label="CreateToDoFragment" >
+        <action
+            android:id="@+id/action_createToDoFragment_to_toDoFragment"
+            app:destination="@id/toDoFragment"
+            app:popUpTo="@id/toDoFragment"
+            app:popUpToInclusive="true" />
+
+    </fragment>
+</navigation>

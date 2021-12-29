@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="todoitem"
+            type="com.pittodo.model.ToDoItem" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+        <TextView
+            android:id="@+id/todo_textview"
+            android:text="@{todoitem.title}"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/enteredBy_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{`Entered by User Id `+todoitem.userId}"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="@+id/todo_textview"
+            app:layout_constraintTop_toBottomOf="@+id/todo_textview" />
+
+        <TextView
+            android:id="@+id/isCompleted_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text='@{todoitem.completed==true ? @string/completed : @string/to_be_completed}'
+            app:layout_constraintStart_toStartOf="@+id/enteredBy_textView"
+            app:layout_constraintTop_toBottomOf="@+id/enteredBy_textView" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
